@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: auto-parts-store
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auto_parts_store
+    username: postgres
+    password: root
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        max.block.ms: 5000
+
+app:
+  jwt:
+    secret: auto-parts-store-jwt-secret-key-32bytes
+    expiration-ms: 300000
+  admin:
+    email: admin@mail.com
+    password: admin123
+    full-name: Администратор
+    phone: "+375290000000"
+  kafka:
+    orders-topic: orders
